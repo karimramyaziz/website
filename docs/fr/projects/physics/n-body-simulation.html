@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N-Body Gravitational Simulation · Notes & Work</title>
+<meta name="description" content="A Python simulation of gravitational N-body dynamics using symplectic integration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../static/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="header-top-row">
+        <div>
+          <a class="site-title" href="../../index.html">Notes & Work</a>
+          <span class="site-tag">maths + physique — Université de Boston</span>
+        </div>
+        <div class="lang-toggle">
+          <span class="lang-current">FR</span>
+          <span class="lang-sep">/</span>
+          <a href="../../../projects/physics/n-body-simulation.html">EN</a>
+        </div>
+      </div>
+    </div>
+    <div class="tabbar-wrap">
+      <nav class="tabbar">
+        <a href="../../index.html" class=""><span class="tnum">§1</span>Accueil</a>
+        <a href="../../cv.html" class=""><span class="tnum">§2</span>CV</a>
+        <a href="../../math.html" class=""><span class="tnum">§3</span>Mathématiques</a>
+        <a href="../../physics.html" class="active"><span class="tnum">§4</span>Physique</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      
+
+<article>
+  <div class="eyebrow" style="margin-bottom:10px;">§PR1 — Physique projet</div>
+  <h1 class="title">N-Body Gravitational Simulation</h1>
+  <p class="summary">A Python simulation of gravitational N-body dynamics using symplectic integration.</p>
+  <h2 id="overview">Overview</h2>
+<p>A small Python project simulating gravitational interactions between $N$ bodies using a <strong>leapfrog (velocity-Verlet) integrator</strong>, chosen over Runge-Kutta methods because it&rsquo;s symplectic — it conserves energy over long timescales instead of slowly leaking or gaining it.</p>
+<h2 id="the-physics">The physics</h2>
+<p>Each body $i$ feels a gravitational force from every other body $j$:</p>
+<p>$$\mathbf{F}<em _neq="\neq" i="i" j="j">i = -Gm_i \sum</em>$$} \frac{m_j (\mathbf{r}_i - \mathbf{r}_j)}{|\mathbf{r}_i - \mathbf{r}_j|^3</p>
+<p>Naive implementation is $O(N^2)$ per timestep — fine up to a few thousand bodies, but a Barnes-Hut tree approximation would be the next step for anything larger.</p>
+<h2 id="whats-in-the-repo">What&rsquo;s in the repo</h2>
+<ul>
+<li><code>simulate.py</code> — core integrator</li>
+<li><code>plot.py</code> — trajectory visualization with <code>matplotlib</code></li>
+<li>A three-body figure-eight orbit as a validation test case</li>
+</ul>
+<h2 id="status">Status</h2>
+<p>Working for small $N$; next step is adding adaptive timestepping for close encounters.</p>
+<p><em>(Replace this with your actual project details, and link to your GitHub repo here once it&rsquo;s public.)</em></p>
+</article>
+
+
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Notes & Work — généré avec un petit générateur de site Markdown/PDF</span>
+    <span>Université de Boston</span>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true}
+        ]
+      });
+    }
+  });
+</script>
+</body>
+</html>

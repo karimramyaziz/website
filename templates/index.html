@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="intro-block">
+  <div class="eyebrow">{{ S.boston_line }}</div>
+  <h1>{{ about_title }}</h1>
+  <div>{{ about_html | safe }}</div>
+</div>
+
+<div class="eyebrow" style="margin-bottom:6px;">{{ S.recent_notes }}</div>
+<ul class="toc-list">
+  {% for n in recent_notes %}
+  <a class="toc-item" href="{{ n.href }}" target="_blank" rel="noopener">
+    <span class="num">{{ n.num }}</span>
+    <span class="meta">
+      <div class="ttl">{{ n.title }}<span class="pdf-badge">PDF</span></div>
+      <div class="sub">{{ n.subject_label }}</div>
+    </span>
+    <span class="date">{{ n.date }}</span>
+  </a>
+  {% else %}
+  <li class="empty-state">{{ S.no_notes_home }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

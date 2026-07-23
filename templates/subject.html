@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="intro-block">
+  <div class="eyebrow">{{ eyebrow }}</div>
+  <h1>{{ subject_name }}</h1>
+  {% if subject_description %}<p>{{ subject_description }}</p>{% endif %}
+</div>
+
+<div class="group-heading">{{ S.notes_heading }}</div>
+<ul class="toc-list">
+  {% for n in notes %}
+  <a class="toc-item" href="{{ n.href }}" target="_blank" rel="noopener">
+    <span class="num">{{ n.num }}</span>
+    <span class="meta">
+      <div class="ttl">{{ n.title }}<span class="pdf-badge">PDF</span></div>
+    </span>
+    <span class="date">{{ n.date }}</span>
+  </a>
+  {% else %}
+  <li class="empty-state">{{ no_notes_msg }}</li>
+  {% endfor %}
+</ul>
+
+<div class="group-heading">{{ S.projects_heading }}</div>
+<ul class="toc-list">
+  {% for p in projects %}
+  <a class="toc-item" href="{{ p.href }}">
+    <span class="num">{{ p.num }}</span>
+    <span class="meta">
+      <div class="ttl">{{ p.title }}</div>
+      {% if p.sub %}<div class="sub">{{ p.sub }}</div>{% endif %}
+    </span>
+    {% if p.date %}<span class="date">{{ p.date }}</span>{% endif %}
+  </a>
+  {% else %}
+  <li class="empty-state">{{ no_projects_msg }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

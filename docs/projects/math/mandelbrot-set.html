@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualizing the Mandelbrot Set Boundary · Notes & Work</title>
+<meta name="description" content="A Python renderer exploring escape-time coloring and boundary zoom regions of the Mandelbrot set.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../static/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="header-top-row">
+        <div>
+          <a class="site-title" href="../../index.html">Notes & Work</a>
+          <span class="site-tag">math + physics — Boston University</span>
+        </div>
+        <div class="lang-toggle">
+          <span class="lang-current">EN</span>
+          <span class="lang-sep">/</span>
+          <a href="../../fr/projects/math/mandelbrot-set.html">FR</a>
+        </div>
+      </div>
+    </div>
+    <div class="tabbar-wrap">
+      <nav class="tabbar">
+        <a href="../../index.html" class=""><span class="tnum">§1</span>Home</a>
+        <a href="../../cv.html" class=""><span class="tnum">§2</span>CV</a>
+        <a href="../../math.html" class="active"><span class="tnum">§3</span>Mathematics</a>
+        <a href="../../physics.html" class=""><span class="tnum">§4</span>Physics</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      
+
+<article>
+  <div class="eyebrow" style="margin-bottom:10px;">§MR1 — Mathematics project</div>
+  <h1 class="title">Visualizing the Mandelbrot Set Boundary</h1>
+  <p class="summary">A Python renderer exploring escape-time coloring and boundary zoom regions of the Mandelbrot set.</p>
+  <h2 id="overview">Overview</h2>
+<p>A small project rendering the Mandelbrot set using the escape-time algorithm, with an interest in how boundary regions relate to the set&rsquo;s connectedness (a consequence of it being the connectedness locus of quadratic polynomials $z \mapsto z^2 + c$).</p>
+<h2 id="the-math">The math</h2>
+<p>A point $c \in \mathbb{C}$ is in the Mandelbrot set if the orbit of $0$ under</p>
+<p>$$z_{n+1} = z_n^2 + c$$</p>
+<p>stays bounded. In practice, if $|z_n| &gt; 2$ for any $n$, the orbit is guaranteed to escape to infinity, which is what makes the escape-time algorithm tractable.</p>
+<h2 id="whats-in-the-repo">What&rsquo;s in the repo</h2>
+<ul>
+<li><code>mandelbrot.py</code> — core escape-time computation, vectorized with <code>numpy</code></li>
+<li><code>render.py</code> — coloring schemes (smooth iteration count vs. discrete banding)</li>
+<li>A few saved high-resolution renders of boundary zoom regions</li>
+</ul>
+<h2 id="status">Status</h2>
+<p>Working renderer; next step is arbitrary-precision arithmetic (<code>mpmath</code>) to push zoom depth further before floating-point precision breaks down.</p>
+<p><em>(Replace this with your actual project details, and link to your GitHub repo here once it&rsquo;s public.)</em></p>
+</article>
+
+
+    </div>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Notes & Work — built with a hand-rolled markdown/PDF site generator</span>
+    <span>Boston University</span>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (window.renderMathInElement) {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true}
+        ]
+      });
+    }
+  });
+</script>
+</body>
+</html>
