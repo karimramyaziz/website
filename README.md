@@ -1,32 +1,34 @@
 # Notes & Work — personal site
 
-A tiny static site generator: notes are just PDFs you drop into a
-folder, projects/CV are Markdown, and it builds a clean, tab-navigated
-website. No CMS, no database, no build service to configure — just
-Python and files.
+A tiny static site generator: notes, projects, and your CV are all
+just PDFs you drop into folders, and it builds a clean, tab-navigated,
+bilingual website around them. No CMS, no database, no build service
+to configure — just Python and files.
 
 ## How it's organized
 
 ```
 content/
-  about.md              ← Home tab intro / about blurb
-  cv.md                 ← your CV, as plain text/markdown
+  about.en.md / about.fr.md   ← Home tab intro, one per language
+  cv.pdf                      ← your actual CV, as a PDF
+  images/                     ← photos referenced from about.*.md
   notes/
-    math/*.pdf            ← drop math note PDFs here
-    physics/*.pdf         ← drop physics note PDFs here
+    math/*.pdf                  ← drop math note PDFs here
+    physics/*.pdf                ← drop physics note PDFs here
   projects/
-    math/*.md              ← math project write-ups
-    physics/*.md            ← physics project write-ups
+    math/*.pdf                  ← drop math project PDFs here
+    physics/*.pdf                ← drop physics project PDFs here
 
 templates/               ← page layouts (Jinja2) — edit rarely
-static/css/style.css     ← all styling lives here
+static/css/style.css     ← all styling lives here (black, formal theme)
 build.py                 ← the generator — run this after any edit
 docs/                    ← GENERATED — this is what gets published, don't hand-edit
 ```
 
 The site has four tabs: **Home** (about + recent notes), **CV**,
 **Mathematics**, and **Physics**. Each subject tab shows that
-subject's Notes and Projects together, in that order.
+subject's Notes and Projects together, in that order — everything
+opens as a PDF in a new tab.
 
 ## Language toggle (English / French)
 
@@ -38,18 +40,16 @@ What's bilingual vs. not:
 - **Site chrome** (tab names, section headings, buttons, empty-state
   messages): fully translated. Edit the `STRINGS` dict near the top of
   `build.py` to change wording in either language.
-- **About / CV**: real separate content per language —
-  `content/about.en.md` / `content/about.fr.md`, and
-  `content/cv.en.md` / `content/cv.fr.md`. Edit each independently.
-- **Notes (PDFs) and Project write-ups**: *not* auto-translated —
-  they show up identically in both languages. Only the page chrome
-  around them (header, tabs, footer) switches. If you want a project
-  write-up in both languages, you'd need to write both versions
-  yourself; ask me if you want help wiring that up.
+- **About**: real separate content per language —
+  `content/about.en.md` / `content/about.fr.md`. Edit each
+  independently.
+- **Notes, Projects, and the CV**: all PDFs, and *not*
+  auto-translated — they show up identically in both languages. Only
+  the page chrome around them (header, tabs, footer) switches.
 
 To add a third language later, duplicate a language block in
-`STRINGS`, add `about.<code>.md` / `cv.<code>.md`, and add `"<code>"`
-to the `LANGS` list — the rest of the build handles it automatically.
+`STRINGS`, add `about.<code>.md`, and add `"<code>"` to the `LANGS`
+list — the rest of the build handles it automatically.
 
 ## Adding a new note
 
@@ -82,30 +82,47 @@ Notes are just PDFs. No markdown, no frontmatter required.
 
 ## Adding a new project
 
-Projects are still Markdown, since write-ups are prose you'll want to
-edit in place.
+Projects work exactly like notes — just PDFs, same filename pattern.
 
-1. Add a `.md` file to `content/projects/math/` or
-   `content/projects/physics/`, with a frontmatter block:
+1. Drop a `.pdf` into `content/projects/math/` or
+   `content/projects/physics/`, optionally named with a leading date:
 
-   ```markdown
-   ---
-   title: Simulating Coupled Oscillators
-   date: 2026-09-01
-   summary: One-line description shown in listings.
-   tags: [python, mechanics]
-   ---
-
-   Write-up here, in Markdown. Math works too: `$\omega^2 = k/m$`.
+   ```
+   content/projects/physics/2026-09-01_Coupled-Oscillator-Simulation.pdf
    ```
 
 2. Run `python3 build.py` — it appears under "Projects" on the
-   matching subject tab.
+   matching subject tab, opening as a PDF in a new tab.
 
-## Editing About / CV
+## Editing About
 
-Just edit `content/about.md` or `content/cv.md` directly and rebuild.
-Fill in the `[bracketed placeholders]` with your real info.
+Edit `content/about.en.md` and `content/about.fr.md` directly and
+rebuild. Fill in the `[bracketed placeholders]` with your real info —
+these are plain Markdown files.
+
+## Replacing the CV
+
+Just overwrite `content/cv.pdf` with your own PDF (export/print your
+résumé, or compile your own LaTeX to PDF) and run `python3 build.py`.
+The CV tab shows an inline preview plus an "Open CV as PDF" link.
+
+## Adding photos with captions
+
+Put an image file in `content/images/`, then reference it from any
+Markdown content (currently just `about.en.md` / `about.fr.md`) with:
+
+```html
+<figure class="photo">
+  <img src="images/yourphoto.jpg" alt="Description">
+  <figcaption>Your caption here.</figcaption>
+</figure>
+```
+
+Use `class="photo float-right"` instead to float it beside a
+paragraph on wide screens (it stacks full-width automatically on
+mobile). A placeholder photo and caption are already wired up in
+`about.en.md` / `about.fr.md` — just swap `content/images/profile.jpg`
+for your own photo of the same filename, or update the `src` path.
 
 ## Local preview
 

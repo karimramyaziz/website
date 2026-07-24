@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="eyebrow" style="margin-bottom:10px;">{{ eyebrow }}</div>
+<h1 class="title">{{ S.cv_title }}</h1>
+
+{% if cv_pdf_href %}
+<div class="pdf-embed-wrap">
+  <a class="pdf-open-link" href="{{ cv_pdf_href }}" target="_blank" rel="noopener">{{ S.cv_open }} ↗</a>
+  <object class="pdf-embed-frame" data="{{ cv_pdf_href }}" type="application/pdf">
+    <p class="pdf-embed-fallback">{{ S.cv_fallback }}</p>
+  </object>
+</div>
+{% else %}
+<p class="empty-state">No CV uploaded yet — add content/cv.pdf and rebuild.</p>
+{% endif %}
+
+{% endblock %}

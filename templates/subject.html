@@ -25,13 +25,12 @@
 <div class="group-heading">{{ S.projects_heading }}</div>
 <ul class="toc-list">
   {% for p in projects %}
-  <a class="toc-item" href="{{ p.href }}">
+  <a class="toc-item" href="{{ p.href }}" target="_blank" rel="noopener">
     <span class="num">{{ p.num }}</span>
     <span class="meta">
-      <div class="ttl">{{ p.title }}</div>
-      {% if p.sub %}<div class="sub">{{ p.sub }}</div>{% endif %}
+      <div class="ttl">{{ p.title }}<span class="pdf-badge">PDF</span></div>
     </span>
-    {% if p.date %}<span class="date">{{ p.date }}</span>{% endif %}
+    <span class="date">{{ p.date }}</span>
   </a>
   {% else %}
   <li class="empty-state">{{ no_projects_msg }}</li>
