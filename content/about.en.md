@@ -1,5 +1,5 @@
 ---
-title: Hi, I'm [Your Name].
+title: [Karim Aziz].
 ---
 
 <figure class="photo float-right">
