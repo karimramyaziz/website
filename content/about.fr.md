@@ -1,14 +1,8 @@
 ---
-title: Salut, je suis [Votre Nom].
+title: Salut, je suis Karim Aziz.
 ---
-
 <figure class="photo float-right">
-  <img src="images/profile.png" alt="[Moi dans les Alpes Suisses]">
-  <figcaption>[Moi dans les Alpes Suisses]</figcaption>
+  <img src="images/profile.png" alt="Moi dans les Alpes suisses">
+  <figcaption>Moi dans les Alpes suisses.</figcaption>
 </figure>
-
-Je suis étudiant en mathématiques et en physique à l'Université de Boston. Ce site est l'endroit où je garde mes notes de cours, où j'écris des solutions à des problèmes que je trouve intéressants, et où je publie mes projets au fur et à mesure.
-
-La plupart de ce qui se trouve ici a commencé comme des notes manuscrites ou du LaTeX que je ne voulais pas perdre — je le reconstruis petit à petit, donc attendez-vous à des lacunes. Si quelque chose semble faux ou incomplet, c'est généralement parce que ça l'est.
-
-Parcourez les notes et projets sous [Mathématiques](math.html) ou [Physique](physics.html), ou consultez mon [CV](cv.html).
+Je suis un étudiant égyptien en mathématiques et en physique à l'Université de Boston. Je suis aussi pianiste, compositeur et joueur d'échecs amateur.

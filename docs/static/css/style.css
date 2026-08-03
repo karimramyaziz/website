@@ -222,7 +222,9 @@ main { padding: 0 0 60px; }
   margin-bottom: 6px;
 }
 .article-meta a { color: var(--muted); }
-article h1.title { font-size: 29px; margin-bottom: 6px; }
+article h1.title, .cv-head h1.title { font-size: 29px; margin-bottom: 14px; }
+.cv-head { margin-bottom: 34px; }
+.cv-body h2:first-child { margin-top: 0; }
 article .summary { color: var(--ink-soft); font-size: 17px; margin-bottom: 30px; }
 
 article h2 {
@@ -315,21 +317,8 @@ figure.photo.float-right {
 }
 
 /* ============================================================
-   PDF embed (CV)
+   CV download link
    ============================================================ */
-.pdf-embed-wrap { margin: 26px 0; }
-.pdf-embed-frame {
-  width: 100%;
-  height: 820px;
-  border: 1px solid var(--rule);
-  background: var(--paper-sunken);
-}
-.pdf-embed-fallback {
-  font-family: var(--mono);
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-top: 10px;
-}
 .pdf-open-link {
   display: inline-block;
   font-family: var(--mono);
@@ -340,7 +329,7 @@ figure.photo.float-right {
   border: 1px solid var(--accent);
   padding: 8px 16px;
   text-decoration: none;
-  margin-bottom: 18px;
+  margin-top: 6px;
 }
 .pdf-open-link:hover { background: var(--accent-soft); }
 
@@ -370,7 +359,6 @@ footer {
   .intro-block h1 { font-size: 26px; }
   main { padding: 0 0 50px; }
   .toc-item { flex-wrap: wrap; }
-  .pdf-embed-frame { height: 500px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

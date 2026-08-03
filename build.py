@@ -55,7 +55,7 @@ LANGS = ["en", "fr"]
 OUT_ROOT = {"en": OUT, "fr": os.path.join(OUT, "fr")}
 
 SITE = {
-    "name": "Notes & Work",
+    "name": "Karim Aziz",
     "description": "Course notes, research, and projects in mathematics and physics.",
 }
 
@@ -67,7 +67,7 @@ SUBJECTS = [
 STRINGS = {
     "en": {
         "lang_label": "EN", "other_lang_label": "FR",
-        "site_tagline": "math + physics — Boston University",
+        "site_tagline": "Boston University",
         "home": "Home", "cv": "CV", "math_tab": "Mathematics", "physics_tab": "Physics",
         "subject_label": {"math": "Mathematics", "physics": "Physics"},
         "subject_desc": {
@@ -76,21 +76,17 @@ STRINGS = {
         },
         "notes_heading": "Notes",
         "projects_heading": "Projects",
-        "recent_notes": "Recent notes",
-        "boston_line": "Boston University · Mathematics & Physics",
         "cv_eyebrow": "Curriculum Vitae",
         "cv_title": "CV",
-        "cv_open": "Open CV as PDF",
-        "cv_fallback": "If the preview above doesn't load, open the PDF directly using the link above.",
+        "cv_open": "Download as PDF",
         "no_notes": "No notes posted yet — drop a PDF into content/notes/{slug}/ and rebuild.",
         "no_projects": "No projects posted yet — drop a PDF into content/projects/{slug}/ and rebuild.",
-        "no_notes_home": "No notes posted yet — drop a PDF into content/notes/ and rebuild.",
         "footer_built": "built with a hand-rolled site generator",
         "footer_school": "Boston University",
     },
     "fr": {
         "lang_label": "FR", "other_lang_label": "EN",
-        "site_tagline": "maths + physique — Université de Boston",
+        "site_tagline": "Université de Boston",
         "home": "Accueil", "cv": "CV", "math_tab": "Mathématiques", "physics_tab": "Physique",
         "subject_label": {"math": "Mathématiques", "physics": "Physique"},
         "subject_desc": {
@@ -99,15 +95,11 @@ STRINGS = {
         },
         "notes_heading": "Notes",
         "projects_heading": "Projets",
-        "recent_notes": "Notes récentes",
-        "boston_line": "Université de Boston · Mathématiques et physique",
         "cv_eyebrow": "Curriculum Vitae",
         "cv_title": "CV",
-        "cv_open": "Ouvrir le CV en PDF",
-        "cv_fallback": "Si l'aperçu ci-dessus ne s'affiche pas, ouvrez le PDF directement via le lien ci-dessus.",
+        "cv_open": "Télécharger en PDF",
         "no_notes": "Aucune note pour l'instant — ajoutez un PDF dans content/notes/{slug}/ et relancez la génération.",
         "no_projects": "Aucun projet pour l'instant — ajoutez un PDF dans content/projects/{slug}/ et relancez la génération.",
-        "no_notes_home": "Aucune note pour l'instant — ajoutez un PDF dans content/notes/ et relancez la génération.",
         "footer_built": "généré avec un petit générateur de site",
         "footer_school": "Université de Boston",
     },
@@ -205,11 +197,17 @@ def build():
             shutil.copy2(src, p["abs_path"])
         projects_by_subject[slug] = projects
 
-    # ---- CV: single PDF, shared across languages ----
-    cv_src = os.path.join(CONTENT, "cv.pdf")
-    cv_abs_path = os.path.join(OUT, "cv.pdf")
-    if os.path.exists(cv_src):
-        shutil.copy2(cv_src, cv_abs_path)
+    # ---- CV: real page content (Markdown), PDF kept only as a download ----
+    cv_pdf_src = os.path.join(CONTENT, "cv.pdf")
+    cv_pdf_abs_path = os.path.join(OUT, "cv.pdf")
+    if os.path.exists(cv_pdf_src):
+        shutil.copy2(cv_pdf_src, cv_pdf_abs_path)
+
+    cv_md_path = os.path.join(CONTENT, "cv.md")
+    cv_body_html = ""
+    if os.path.exists(cv_md_path):
+        with open(cv_md_path, encoding="utf-8") as f:
+            cv_body_html = render_md(f.read())
 
     def base_ctx(out_path, lang, active, rel_page, page_title="", page_description=""):
         S = STRINGS[lang]
@@ -264,7 +262,8 @@ def build():
         ctx = base_ctx(cv_out, lang, "cv", "cv.html", page_title=S["cv_title"])
         ctx.update({
             "eyebrow": f"§2 — {S['cv_eyebrow']}",
-            "cv_pdf_href": href(cv_out, cv_abs_path) if os.path.exists(cv_abs_path) else None,
+            "cv_body_html": cv_body_html,
+            "cv_pdf_href": href(cv_out, cv_pdf_abs_path) if os.path.exists(cv_pdf_abs_path) else None,
         })
         write(cv_out, env.get_template("cv.html").render(**ctx))
 
@@ -273,23 +272,10 @@ def build():
         about_post = frontmatter.load(about_path) if os.path.exists(about_path) else frontmatter.loads("")
         index_out = os.path.join(out_root, "index.html")
 
-        all_notes_flat = []
-        for subj in SUBJECTS:
-            for n in notes_by_subject[subj["slug"]]:
-                all_notes_flat.append((subj["slug"], n))
-        all_notes_flat.sort(key=lambda t: (t[1]["date_obj"] is None, t[1]["date_obj"] or datetime.min), reverse=True)
-
-        recent = [{
-            "num": n["num"], "title": n["title"], "date": n["date"],
-            "subject_label": S["subject_label"][slug],
-            "href": href(index_out, n["abs_path"]),
-        } for slug, n in all_notes_flat[:6]]
-
         ctx = base_ctx(index_out, lang, "home", "index.html", page_title=S["home"])
         ctx.update({
             "about_title": about_post.get("title", "About"),
             "about_html": render_md(about_post.content),
-            "recent_notes": recent,
         })
         write(index_out, env.get_template("index.html").render(**ctx))
 
