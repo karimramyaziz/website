@@ -3,8 +3,8 @@ title: Hi, I'm [Your Name].
 ---
 
 <figure class="photo float-right">
-  <img src="images/profile.jpg" alt="[Your Name]">
-  <figcaption>[Your Name], Boston University — replace content/images/profile.jpg with your own photo.</figcaption>
+  <img src="images/profile.png" alt="[Myself in the Swiss Alps]">
+  <figcaption>[Myself in the Swiss Alps]</figcaption>
 </figure>
 
 I'm a mathematics and physics student at Boston University. This site is where I keep course notes, write up problems I find interesting, and post projects as I work on them.
