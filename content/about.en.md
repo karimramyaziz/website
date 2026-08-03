@@ -7,8 +7,8 @@ title: [Karim Aziz].
   <figcaption>[Myself in the Swiss Alps]</figcaption>
 </figure>
 
-I'm a mathematics and physics student at Boston University. This site is where I keep course notes, write up problems I find interesting, and post projects as I work on them.
+I am an Egyptian mathematics and physics student at Boston University. I am also an amateur pianist, composer, and chess player.
 
-Most of what's here started as handwritten notes or LaTeX I didn't want to lose — I'm rebuilding it as I go, so expect gaps. If something looks wrong or incomplete, that's usually because it is.
+This site is a place to keep track of projects I am working on, and to post some of my notes.
 
 Browse notes and projects under [Mathematics](math.html) or [Physics](physics.html), or see my [CV](cv.html).
