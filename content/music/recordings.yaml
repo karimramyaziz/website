@@ -1,0 +1,19 @@
+# Favorite recordings.
+# Each entry needs: title, performer, cover (path under content/music/, e.g. covers/x.jpg),
+# and link (a URL to Spotify, YouTube, Apple Music, etc.)
+# Add or remove entries freely, then run python3 build.py.
+
+- title: "Symphony No. 9 in D minor"
+  performer: "Wilhelm Furtwängler, Bayreuth Festival Orchestra"
+  cover: covers/cover1.jpg
+  link: "https://open.spotify.com/"
+
+- title: "Goldberg Variations, BWV 988"
+  performer: "Glenn Gould (1981 recording)"
+  cover: covers/cover2.jpg
+  link: "https://open.spotify.com/"
+
+- title: "Piano Concerto No. 2 in C minor, Op. 18"
+  performer: "Sergei Rachmaninoff, Philadelphia Orchestra"
+  cover: covers/cover3.jpg
+  link: "https://open.spotify.com/"

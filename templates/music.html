@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="intro-block">
+  <div class="eyebrow">{{ eyebrow }}</div>
+  <h1>{{ S.music_title }}</h1>
+  <p>{{ music_description }}</p>
+</div>
+
+<div class="group-heading">{{ S.recordings_heading }}</div>
+{% if recordings %}
+<div class="recording-grid">
+  {% for r in recordings %}
+  <a class="recording-card" href="{{ r.link }}" target="_blank" rel="noopener">
+    {% if r.cover_href %}
+    <img class="recording-cover" src="{{ r.cover_href }}" alt="{{ r.title }}">
+    {% endif %}
+    <div class="recording-title">{{ r.title }}</div>
+    <div class="recording-performer">{{ r.performer }}</div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p class="empty-state">{{ S.no_recordings }}</p>
+{% endif %}
+
+<div class="group-heading">{{ S.concerts_heading }} {% if concert_count %}<span class="concert-count">({{ concert_count }})</span>{% endif %}</div>
+{% if concert_groups %}
+{% for group in concert_groups %}
+<div class="concert-year">{{ group.year }}</div>
+<ul class="concert-list">
+  {% for row in group.rows %}
+  <li class="concert-row">
+    <span class="concert-date">{{ row.date }}</span>
+    <span class="concert-program">{{ row.program }}</span>
+    <span class="concert-venue">{{ row.venue }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
+{% else %}
+<p class="empty-state">{{ S.no_concerts }}</p>
+{% endif %}
+
+{% endblock %}

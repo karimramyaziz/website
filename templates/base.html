@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{ css_href }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 </head>
-<body>
+<body class="page-{{ active }}">
 <div class="shell">
 
   <header class="site-header">
@@ -33,6 +33,7 @@
         <a href="{{ cv_href }}" class="{{ 'active' if active=='cv' else '' }}">{{ S.cv }}</a>
         <a href="{{ math_href }}" class="{{ 'active' if active=='math' else '' }}">{{ S.math_tab }}</a>
         <a href="{{ physics_href }}" class="{{ 'active' if active=='physics' else '' }}">{{ S.physics_tab }}</a>
+        <a href="{{ music_href }}" class="{{ 'active' if active=='music' else '' }}">{{ S.music_tab }}</a>
       </nav>
     </div>
   </header>

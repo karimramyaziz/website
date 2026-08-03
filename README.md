@@ -10,7 +10,8 @@ to configure — just Python and files.
 ```
 content/
   about.en.md / about.fr.md   ← Home tab intro, one per language
-  cv.pdf                      ← your actual CV, as a PDF
+  cv.en.md / cv.fr.md         ← CV page content, one per language
+  cv.pdf                      ← downloadable CV PDF
   images/                     ← photos referenced from about.*.md
   notes/
     math/*.pdf                  ← drop math note PDFs here
@@ -18,6 +19,10 @@ content/
   projects/
     math/*.pdf                  ← drop math project PDFs here
     physics/*.pdf                ← drop physics project PDFs here
+  music/
+    recordings.yaml              ← favorite recordings (title, performer, cover, link)
+    concerts.csv                 ← concerts attended (date, program, venue)
+    covers/*.jpg                 ← album cover images referenced from recordings.yaml
 
 templates/               ← page layouts (Jinja2) — edit rarely
 static/css/style.css     ← all styling lives here (black, formal theme)
@@ -25,10 +30,10 @@ build.py                 ← the generator — run this after any edit
 docs/                    ← GENERATED — this is what gets published, don't hand-edit
 ```
 
-The site has four tabs: **Home** (about + recent notes), **CV**,
-**Mathematics**, and **Physics**. Each subject tab shows that
-subject's Notes and Projects together, in that order — everything
-opens as a PDF in a new tab.
+The site has five tabs: **Home** (about), **CV**, **Mathematics**,
+**Physics**, and **Music**. Each subject tab shows that subject's
+Notes and Projects together, in that order — everything opens as a
+PDF in a new tab.
 
 ## Language toggle (English / French)
 
@@ -104,7 +109,35 @@ these are plain Markdown files.
 
 Just overwrite `content/cv.pdf` with your own PDF (export/print your
 résumé, or compile your own LaTeX to PDF) and run `python3 build.py`.
-The CV tab shows an inline preview plus an "Open CV as PDF" link.
+The CV tab shows the full content plus a "Download as PDF" link.
+Edit `content/cv.en.md` / `content/cv.fr.md` to change the on-page
+text itself (separate from the downloadable PDF).
+
+## Adding music content
+
+**Favorite recordings** — edit `content/music/recordings.yaml`:
+
+```yaml
+- title: "Goldberg Variations, BWV 988"
+  performer: "Glenn Gould (1981 recording)"
+  cover: covers/goldberg.jpg
+  link: "https://open.spotify.com/..."
+```
+
+Drop the cover image into `content/music/covers/`, matching the path
+you used above, then run `python3 build.py`.
+
+**Concerts attended** — edit `content/music/concerts.csv`. This is a
+plain spreadsheet file: open it in Excel, Numbers, or Google Sheets,
+keep the same three column headers (`date`, `program`, `venue`), and
+add a row per concert — this is the easiest way to bulk-add all 100+
+at once rather than editing by hand. Use `YYYY-MM-DD` for dates so
+they sort correctly and group by year. Save/export back to CSV format
+when done, then run `python3 build.py`.
+
+Recordings and concerts aren't translated between languages (same
+policy as Notes/Projects/CV) — they show up identically on both the
+English and French Music tab.
 
 ## Adding photos with captions
 

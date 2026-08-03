@@ -34,6 +34,15 @@ it from content/about.en.md (or any markdown file) with:
 
 Add class="photo float-right" instead of class="photo" to float it
 beside a paragraph on wide screens.
+
+MUSIC TAB:
+  - Favorite recordings: edit content/music/recordings.yaml (title,
+    performer, cover image path, link to Spotify/YouTube/etc.). Cover
+    images go in content/music/covers/.
+  - Concerts attended: edit content/music/concerts.csv (columns:
+    date, program, venue). Easiest to bulk-edit in a spreadsheet —
+    just keep the same column headers and export back to CSV. Dates
+    should be YYYY-MM-DD so they sort and group by year correctly.
 """
 
 import os
@@ -68,7 +77,7 @@ STRINGS = {
     "en": {
         "lang_label": "EN", "other_lang_label": "FR",
         "site_tagline": "Boston University",
-        "home": "Home", "cv": "CV", "math_tab": "Mathematics", "physics_tab": "Physics",
+        "home": "Home", "cv": "CV", "math_tab": "Mathematics", "physics_tab": "Physics", "music_tab": "Music",
         "subject_label": {"math": "Mathematics", "physics": "Physics"},
         "subject_desc": {
             "math": "Course notes and projects from my math coursework and independent study.",
@@ -81,13 +90,20 @@ STRINGS = {
         "cv_open": "Download as PDF",
         "no_notes": "No notes posted yet — drop a PDF into content/notes/{slug}/ and rebuild.",
         "no_projects": "No projects posted yet — drop a PDF into content/projects/{slug}/ and rebuild.",
+        "music_eyebrow": "§5 — Music",
+        "music_title": "Music",
+        "music_desc": "A few favorite recordings, and a running list of concerts I've been to. Compositions and recordings of my own playing are coming eventually.",
+        "recordings_heading": "Favorite Recordings",
+        "concerts_heading": "Concerts Attended",
+        "no_recordings": "No recordings added yet — edit content/music/recordings.yaml and rebuild.",
+        "no_concerts": "No concerts added yet — edit content/music/concerts.csv and rebuild.",
         "footer_built": "built with a hand-rolled site generator",
         "footer_school": "Boston University",
     },
     "fr": {
         "lang_label": "FR", "other_lang_label": "EN",
         "site_tagline": "Université de Boston",
-        "home": "Accueil", "cv": "CV", "math_tab": "Mathématiques", "physics_tab": "Physique",
+        "home": "Accueil", "cv": "CV", "math_tab": "Mathématiques", "physics_tab": "Physique", "music_tab": "Musique",
         "subject_label": {"math": "Mathématiques", "physics": "Physique"},
         "subject_desc": {
             "math": "Notes de cours et projets issus de mes études de mathématiques.",
@@ -100,6 +116,13 @@ STRINGS = {
         "cv_open": "Télécharger en PDF",
         "no_notes": "Aucune note pour l'instant — ajoutez un PDF dans content/notes/{slug}/ et relancez la génération.",
         "no_projects": "Aucun projet pour l'instant — ajoutez un PDF dans content/projects/{slug}/ et relancez la génération.",
+        "music_eyebrow": "§5 — Musique",
+        "music_title": "Musique",
+        "music_desc": "Quelques enregistrements favoris, et une liste des concerts auxquels j'ai assisté. Mes propres compositions et enregistrements arriveront plus tard.",
+        "recordings_heading": "Enregistrements favoris",
+        "concerts_heading": "Concerts",
+        "no_recordings": "Aucun enregistrement pour l'instant — modifiez content/music/recordings.yaml et relancez la génération.",
+        "no_concerts": "Aucun concert pour l'instant — modifiez content/music/concerts.csv et relancez la génération.",
         "footer_built": "généré avec un petit générateur de site",
         "footer_school": "Université de Boston",
     },
@@ -147,6 +170,58 @@ def read_pdfs(folder):
         })
     items.sort(key=lambda n: (n["date_obj"] is None, n["date_obj"] or datetime.min, n["title"]), reverse=True)
     return items
+
+
+def read_recordings(yaml_path, out_covers_dir, content_music_dir):
+    """Load favorite recordings from YAML, copy cover images to output."""
+    import yaml
+    if not os.path.exists(yaml_path):
+        return []
+    with open(yaml_path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or []
+    items = []
+    for entry in data:
+        cover_rel = entry.get("cover", "")
+        cover_abs = None
+        if cover_rel:
+            src = os.path.join(content_music_dir, cover_rel)
+            if os.path.exists(src):
+                dst = os.path.join(out_covers_dir, os.path.basename(cover_rel))
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                shutil.copy2(src, dst)
+                cover_abs = dst
+        items.append({
+            "title": entry.get("title", ""),
+            "performer": entry.get("performer", ""),
+            "link": entry.get("link", ""),
+            "cover_abs": cover_abs,
+        })
+    return items
+
+
+def read_concerts(csv_path):
+    """Load concert list from CSV, sorted most-recent first."""
+    import csv as csv_module
+    if not os.path.exists(csv_path):
+        return []
+    rows = []
+    with open(csv_path, encoding="utf-8") as f:
+        reader = csv_module.DictReader(f)
+        for row in reader:
+            date_raw = (row.get("date") or "").strip()
+            try:
+                date_obj = datetime.strptime(date_raw, "%Y-%m-%d")
+            except ValueError:
+                date_obj = None
+            rows.append({
+                "date_obj": date_obj,
+                "date": date_obj.strftime("%b %Y") if date_obj else date_raw,
+                "year": date_obj.strftime("%Y") if date_obj else "",
+                "program": (row.get("program") or "").strip(),
+                "venue": (row.get("venue") or "").strip(),
+            })
+    rows.sort(key=lambda r: (r["date_obj"] is None, r["date_obj"] or datetime.min), reverse=True)
+    return rows
 
 
 def write(path, html):
@@ -203,6 +278,23 @@ def build():
     if os.path.exists(cv_pdf_src):
         shutil.copy2(cv_pdf_src, cv_pdf_abs_path)
 
+    # ---- Music: favorite recordings (YAML + cover images) and concerts (CSV) ----
+    music_content_dir = os.path.join(CONTENT, "music")
+    recordings = read_recordings(
+        os.path.join(music_content_dir, "recordings.yaml"),
+        os.path.join(OUT, "music", "covers"),
+        music_content_dir,
+    )
+    concerts = read_concerts(os.path.join(music_content_dir, "concerts.csv"))
+    concert_years = []
+    seen_years = set()
+    for c in concerts:
+        y = c["year"] or "Undated"
+        if y not in seen_years:
+            seen_years.add(y)
+            concert_years.append(y)
+    concerts_by_year = {y: [c for c in concerts if (c["year"] or "Undated") == y] for y in concert_years}
+
     def base_ctx(out_path, lang, active, rel_page, page_title="", page_description=""):
         S = STRINGS[lang]
         out_root = OUT_ROOT[lang]
@@ -215,6 +307,7 @@ def build():
             "cv_href": href(out_path, os.path.join(out_root, "cv.html")),
             "math_href": href(out_path, os.path.join(out_root, "math.html")),
             "physics_href": href(out_path, os.path.join(out_root, "physics.html")),
+            "music_href": href(out_path, os.path.join(out_root, "music.html")),
             "toggle_href": href(out_path, os.path.join(other_root, rel_page)),
         }
 
@@ -265,6 +358,26 @@ def build():
             "cv_pdf_href": href(cv_out, cv_pdf_abs_path) if os.path.exists(cv_pdf_abs_path) else None,
         })
         write(cv_out, env.get_template("cv.html").render(**ctx))
+
+        # ---- Music ----
+        music_out = os.path.join(out_root, "music.html")
+        recordings_ctx = [{
+            "title": r["title"], "performer": r["performer"], "link": r["link"],
+            "cover_href": href(music_out, r["cover_abs"]) if r["cover_abs"] else None,
+        } for r in recordings]
+        concert_groups = [{
+            "year": y,
+            "rows": [{"date": c["date"], "program": c["program"], "venue": c["venue"]} for c in concerts_by_year[y]],
+        } for y in concert_years]
+        ctx = base_ctx(music_out, lang, "music", "music.html", page_title=S["music_title"], page_description=S["music_desc"])
+        ctx.update({
+            "eyebrow": S["music_eyebrow"],
+            "music_description": S["music_desc"],
+            "recordings": recordings_ctx,
+            "concert_groups": concert_groups,
+            "concert_count": len(concerts),
+        })
+        write(music_out, env.get_template("music.html").render(**ctx))
 
         # ---- Home ----
         about_path = os.path.join(CONTENT, f"about.{lang}.md")
