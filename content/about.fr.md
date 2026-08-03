@@ -3,8 +3,8 @@ title: Salut, je suis [Votre Nom].
 ---
 
 <figure class="photo float-right">
-  <img src="images/profile.jpg" alt="[Votre Nom]">
-  <figcaption>[Votre Nom], Université de Boston — remplacez content/images/profile.jpg par votre propre photo.</figcaption>
+  <img src="images/profile.png" alt="[Moi dans les Alpes Suisses]">
+  <figcaption>[Moi dans les Alpes Suisses]</figcaption>
 </figure>
 
 Je suis étudiant en mathématiques et en physique à l'Université de Boston. Ce site est l'endroit où je garde mes notes de cours, où j'écris des solutions à des problèmes que je trouve intéressants, et où je publie mes projets au fur et à mesure.
