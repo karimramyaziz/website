@@ -1,62 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV · Karim Aziz</title>
-<meta name="description" content="Course notes, research, and projects in mathematics and physics.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../static/css/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-</head>
-<body>
-<div class="shell">
-
-  <header class="site-header">
-    <div class="site-header-inner">
-      <div class="header-top-row">
-        <div>
-          <a class="site-title" href="index.html">Karim Aziz</a>
-          <span class="site-tag">Université de Boston</span>
-        </div>
-        <div class="lang-toggle">
-          <span class="lang-current">FR</span>
-          <span class="lang-sep">/</span>
-          <a href="../cv.html">EN</a>
-        </div>
-      </div>
-    </div>
-    <div class="tabbar-wrap">
-      <nav class="tabbar">
-        <a href="index.html" class="">Accueil</a>
-        <a href="cv.html" class="active">CV</a>
-        <a href="math.html" class="">Mathématiques</a>
-        <a href="physics.html" class="">Physique</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="panel">
-      
-
-<div class="cv-head">
-  <div class="eyebrow" style="margin-bottom:10px;">§2 — Curriculum Vitae</div>
-  <h1 class="title">CV</h1>
-  
-  <a class="pdf-open-link" href="../cv.pdf" target="_blank" rel="noopener">Télécharger en PDF ↗</a>
-  
-</div>
-
-<article class="cv-body">
-  <div class="cv-header">
+<div class="cv-header">
   <div class="cv-name">Karim Aziz</div>
   <div class="cv-contact">kraziz@bu.edu &nbsp;·&nbsp; +1 (858) 280-9202 &nbsp;·&nbsp; <a href="https://linkedin.com/in/karimramyaziz" target="_blank" rel="noopener">linkedin.com/in/karimramyaziz</a></div>
 </div>
 <hr class="cv-rule">
 
-<h2 id="formation">Formation</h2>
+## Formation
+
 <div class="cv-entry">
   <div class="cv-entry-head">
     <span class="cv-org">Université de Boston, Boston, MA, É.-U.</span>
@@ -81,7 +30,8 @@
   </ul>
 </div>
 
-<h2 id="experience">Expérience</h2>
+## Expérience
+
 <div class="cv-entry">
   <div class="cv-entry-head">
     <span class="cv-org">Organisation Européenne pour la Recherche Nucléaire (CERN), Genève, Suisse</span>
@@ -113,7 +63,8 @@
   </ul>
 </div>
 
-<h2 id="recherche">Recherche</h2>
+## Recherche
+
 <div class="cv-entry">
   <div class="cv-entry-head">
     <span class="cv-org">American Physical Society March Meeting, Denver, CO, É.-U.</span>
@@ -136,7 +87,8 @@
   </ul>
 </div>
 
-<h2 id="bourses-et-subventions">Bourses et subventions</h2>
+## Bourses et subventions
+
 <div class="cv-entry">
   <div class="cv-entry-head">
     <span class="cv-org">Université de Boston, Boston, MA, É.-U.</span>
@@ -159,40 +111,10 @@
   </ul>
 </div>
 
-<h2 id="competences">Compétences</h2>
+## Compétences
+
 <div class="cv-skills">
   <div><span class="cv-skill-label">Informatique</span>Python · Unix · LaTeX · Wolfram Mathematica</div>
   <div><span class="cv-skill-label">Langues</span>Anglais (<em>natif</em>) · Français (<em>natif</em>) · Arabe (<em>natif</em>) · Espagnol (<em>courant</em>)</div>
   <div><span class="cv-skill-label">Activités extrascolaires</span>Musique classique (<em>pianiste, compositeur</em>) · Échecs (<a href="https://ratings.fide.com/profile/54203961" target="_blank" rel="noopener">profil FIDE</a>) · Football (<em>attaquant droit</em>)</div>
 </div>
-</article>
-
-
-    </div>
-  </main>
-
-  <footer>
-    <span>&copy; 2026 Karim Aziz — généré avec un petit générateur de site</span>
-    <span>Université de Boston</span>
-  </footer>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    if (window.renderMathInElement) {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false},
-          {left: "\\(", right: "\\)", display: false},
-          {left: "\\[", right: "\\]", display: true}
-        ]
-      });
-    }
-  });
-</script>
-</body>
-</html>

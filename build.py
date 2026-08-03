@@ -197,17 +197,11 @@ def build():
             shutil.copy2(src, p["abs_path"])
         projects_by_subject[slug] = projects
 
-    # ---- CV: real page content (Markdown), PDF kept only as a download ----
+    # ---- CV PDF: single file, kept only as a download ----
     cv_pdf_src = os.path.join(CONTENT, "cv.pdf")
     cv_pdf_abs_path = os.path.join(OUT, "cv.pdf")
     if os.path.exists(cv_pdf_src):
         shutil.copy2(cv_pdf_src, cv_pdf_abs_path)
-
-    cv_md_path = os.path.join(CONTENT, "cv.md")
-    cv_body_html = ""
-    if os.path.exists(cv_md_path):
-        with open(cv_md_path, encoding="utf-8") as f:
-            cv_body_html = render_md(f.read())
 
     def base_ctx(out_path, lang, active, rel_page, page_title="", page_description=""):
         S = STRINGS[lang]
@@ -259,6 +253,11 @@ def build():
 
         # ---- CV ----
         cv_out = os.path.join(out_root, "cv.html")
+        cv_md_path = os.path.join(CONTENT, f"cv.{lang}.md")
+        cv_body_html = ""
+        if os.path.exists(cv_md_path):
+            with open(cv_md_path, encoding="utf-8") as f:
+                cv_body_html = render_md(f.read())
         ctx = base_ctx(cv_out, lang, "cv", "cv.html", page_title=S["cv_title"])
         ctx.update({
             "eyebrow": f"§2 — {S['cv_eyebrow']}",
