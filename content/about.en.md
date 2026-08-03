@@ -1,5 +1,5 @@
 ---
-title: [Karim Aziz].
+title: Karim Aziz.
 ---
 
 <figure class="photo float-right">
