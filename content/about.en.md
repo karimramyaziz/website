@@ -5,4 +5,6 @@ title: Karim Aziz.
   <img src="images/profile.png" alt="Myself in the Swiss Alps">
   <figcaption>Myself in the Swiss Alps.</figcaption>
 </figure>
-I am an Egyptian mathematics and physics student at Boston University. I am also an amateur pianist, composer, and chess player.
+I am an Egyptian mathematics and physics student at Boston University. My interests span from number theory to theoretical condensed matter physics, and gauge theory.
+
+I am also an amateur pianist, composer, and chess player.
