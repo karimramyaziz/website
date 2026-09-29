@@ -21,7 +21,11 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
 
 body {
   margin: 0;
@@ -494,12 +498,14 @@ hr.cv-rule {
 .concert-year:first-of-type { margin-top: 6px; }
 .concert-list { list-style: none; margin: 0; padding: 0; }
 .concert-row {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.concert-row-top {
   display: flex;
   gap: 16px;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--rule);
-  font-size: 14.5px;
   align-items: baseline;
+  font-size: 14.5px;
 }
 .concert-date {
   font-family: var(--mono);
@@ -508,9 +514,8 @@ hr.cv-rule {
   min-width: 62px;
   flex-shrink: 0;
 }
-.concert-program { flex: 1; color: var(--ink); }
-a.concert-program { text-decoration: none; }
-a.concert-program:hover { color: var(--accent); text-decoration: underline; }
+.concert-conductor { flex: 1; color: var(--ink); font-weight: 600; text-decoration: none; }
+a.concert-conductor:hover { color: var(--accent); text-decoration: underline; }
 .concert-venue {
   font-family: var(--mono);
   font-size: 11.5px;
@@ -518,10 +523,18 @@ a.concert-program:hover { color: var(--accent); text-decoration: underline; }
   text-align: right;
   white-space: nowrap;
 }
+.concert-program {
+  margin-top: 3px;
+  margin-left: 78px;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
 
 @media (max-width: 620px) {
-  .concert-row { flex-wrap: wrap; }
+  .concert-row-top { flex-wrap: wrap; }
   .concert-venue { width: 100%; text-align: left; margin-top: 2px; }
+  .concert-program { margin-left: 0; margin-top: 5px; }
   .recording-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
@@ -555,4 +568,73 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
+}
+
+/* ============================================================
+   RTL support (Arabic)
+   ------------------------------------------------------------
+   dir="rtl" on <html> already mirrors most flexbox/grid layouts
+   automatically (tab bar order, header row, CV entry rows, concert
+   row layout). What's below covers what does NOT auto-mirror:
+   physical (left/right) floats, margins, text-align, and borders,
+   plus Arabic-specific typography fixes.
+   ============================================================ */
+html[dir="rtl"] body,
+html[dir="rtl"] .cv-body,
+html[dir="rtl"] .intro-block p,
+html[dir="rtl"] article p,
+html[dir="rtl"] .empty-state {
+  font-family: "Noto Sans Arabic", "Noto Kufi Arabic", sans-serif;
+}
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] .site-title,
+html[dir="rtl"] .cv-name {
+  font-family: "Noto Kufi Arabic", "Noto Sans Arabic", sans-serif;
+}
+
+/* Arabic is a connected/cursive script: letter-spacing breaks the
+   joins between letters, and uppercase/small-caps styling has no
+   meaning. Reset both wherever the LTR design applies them. */
+html[dir="rtl"] .eyebrow,
+html[dir="rtl"] .tabbar a,
+html[dir="rtl"] .group-heading,
+html[dir="rtl"] .pdf-badge,
+html[dir="rtl"] .cv-skill-label,
+html[dir="rtl"] .site-tag,
+html[dir="rtl"] .lang-toggle,
+html[dir="rtl"] .concert-year {
+  font-family: "Noto Sans Arabic", sans-serif;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Photo: floats to the opposite side so the whole layout mirrors,
+   not just the text direction. */
+html[dir="rtl"] figure.photo.float-right {
+  float: left;
+  margin: 4px 36px 20px 0;
+}
+
+/* Badge sits after the title in reading order; in RTL that's
+   visually to the left, so the gap needs to flip sides too. */
+html[dir="rtl"] .pdf-badge { margin-left: 0; margin-right: 8px; }
+
+/* Blockquote accent bar moves to the side text now starts from. */
+html[dir="rtl"] article blockquote {
+  border-left: none;
+  border-right: 2px solid var(--accent);
+}
+
+/* Concert rows: date/name/venue line auto-mirrors via dir, but the
+   venue's explicit right-alignment and the program's fixed left
+   indent are physical properties that need an explicit flip. */
+html[dir="rtl"] .concert-venue { text-align: left; }
+html[dir="rtl"] .concert-program { margin-left: 0; margin-right: 78px; }
+
+@media (max-width: 620px) {
+  html[dir="rtl"] .concert-venue { text-align: right; }
+  html[dir="rtl"] .concert-program { margin-right: 0; }
 }

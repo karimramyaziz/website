@@ -40,13 +40,16 @@
 <ul class="concert-list">
   {% for row in group.rows %}
   <li class="concert-row">
-    <span class="concert-date">{{ row.date }}</span>
-    {% if row.link %}
-    <a class="concert-program" href="{{ row.link }}" target="_blank" rel="noopener">{{ row.program }}</a>
-    {% else %}
-    <span class="concert-program">{{ row.program }}</span>
-    {% endif %}
-    <span class="concert-venue">{{ row.venue }}</span>
+    <div class="concert-row-top">
+      <span class="concert-date">{{ row.date }}</span>
+      {% if row.link %}
+      <a class="concert-conductor" href="{{ row.link }}" target="_blank" rel="noopener">{{ row.conductor }}, {{ row.orchestra }}</a>
+      {% else %}
+      <span class="concert-conductor">{{ row.conductor }}, {{ row.orchestra }}</span>
+      {% endif %}
+      <span class="concert-venue">{{ row.venue }}</span>
+    </div>
+    <div class="concert-program">{{ row.program }}</div>
   </li>
   {% endfor %}
 </ul>
