@@ -2,7 +2,6 @@
 {% block content %}
 
 <div class="intro-block">
-  <div class="eyebrow">{{ eyebrow }}</div>
   <h1>{{ subject_name }}</h1>
   {% if subject_description %}<p>{{ subject_description }}</p>{% endif %}
 </div>
@@ -11,7 +10,6 @@
 <ul class="toc-list">
   {% for p in projects %}
   <a class="toc-item" href="{{ p.href }}" target="_blank" rel="noopener">
-    <span class="num">{{ p.num }}</span>
     <span class="meta">
       <div class="ttl">{{ p.title }}<span class="pdf-badge">PDF</span></div>
     </span>
@@ -26,7 +24,6 @@
 <ul class="toc-list">
   {% for n in notes %}
   <a class="toc-item" href="{{ n.href }}" target="_blank" rel="noopener">
-    <span class="num">{{ n.num }}</span>
     <span class="meta">
       <div class="ttl">{{ n.title }}<span class="pdf-badge">PDF</span></div>
     </span>

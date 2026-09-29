@@ -1,19 +1,19 @@
-# Favorite recordings.
-# Each entry needs: title, performer, cover (path under content/music/, e.g. covers/x.jpg),
-# and link (a URL to Spotify, YouTube, Apple Music, etc.)
+# What I'm currently listening to.
+# Each entry needs: title, performer, and link.
+# If the link is a Spotify album URL (open.spotify.com/album/...), the site
+# automatically shows Spotify's official embed widget instead of a plain
+# cover image -- real cover art and a playable preview, loaded live from
+# Spotify's own servers.
 # Add or remove entries freely, then run python3 build.py.
 
-- title: "Symphony No. 9 in D minor"
-  performer: "Wilhelm Furtwängler, Bayreuth Festival Orchestra"
-  cover: covers/cover1.jpg
-  link: "https://open.spotify.com/"
+- title: "Symphony No. 1 in C minor, Op. 68"
+  performer: "Berliner Philharmoniker, Kirill Petrenko"
+  link: "https://open.spotify.com/album/2KSJA9WWEs5XtFORmIAdeU"
 
-- title: "Goldberg Variations, BWV 988"
-  performer: "Glenn Gould (1981 recording)"
-  cover: covers/cover2.jpg
-  link: "https://open.spotify.com/"
+- title: "Symphony No. 7 in A major, Op. 92"
+  performer: "Berliner Philharmoniker, Herbert von Karajan"
+  link: "https://open.spotify.com/album/7kZ5Z6eATF6eVl5m51zjI2"
 
-- title: "Piano Concerto No. 2 in C minor, Op. 18"
-  performer: "Sergei Rachmaninoff, Philadelphia Orchestra"
-  cover: covers/cover3.jpg
-  link: "https://open.spotify.com/"
+- title: "Piano Sonata No. 18 in E-flat major, Op. 31 No. 3 (\"The Hunt\")"
+  performer: "Paul Lewis"
+  link: "https://open.spotify.com/album/4XLYoTAOBjZMJAhqwyGduJ"

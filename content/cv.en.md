@@ -37,6 +37,12 @@
     <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, Switzerland</span>
     <span class="cv-date">January 2026 – Present</span>
   </div>
+  <div class="cv-role">Researcher, Supervisor: Prof. Alba Grassi</div>
+  <ul>
+    <li>Research project in mathematical physics and gauge theory.</li>
+    <li>Proved group-theoretic identities relating analytic square-integrable solutions of a deformation of the quantum harmonic oscillator to the Quantum Toda Lattice, an integrable system.</li>
+    <li>Investigating the convergence of functions in supersymmetric gauge theory, and studying their combinatorial properties in certain limits (Nekrasov&ndash;Shatashvili free energy).</li>
+  </ul>
 </div>
 
 <div class="cv-entry">

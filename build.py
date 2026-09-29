@@ -60,8 +60,8 @@ TEMPLATES = os.path.join(ROOT, "templates")
 STATIC = os.path.join(ROOT, "static")
 OUT = os.path.join(ROOT, "docs")
 
-LANGS = ["en", "fr"]
-OUT_ROOT = {"en": OUT, "fr": os.path.join(OUT, "fr")}
+LANGS = ["en", "fr", "de"]
+OUT_ROOT = {"en": OUT, "fr": os.path.join(OUT, "fr"), "de": os.path.join(OUT, "de")}
 
 SITE = {
     "name": "Karim Aziz",
@@ -90,10 +90,10 @@ STRINGS = {
         "cv_open": "Download as PDF",
         "no_notes": "No notes posted yet — drop a PDF into content/notes/{slug}/ and rebuild.",
         "no_projects": "No projects posted yet — drop a PDF into content/projects/{slug}/ and rebuild.",
-        "music_eyebrow": "§5 — Music",
+        "music_eyebrow": "Music",
         "music_title": "Music",
-        "music_desc": "A few favorite recordings, and a running list of concerts I've been to. Compositions and recordings of my own playing are coming eventually.",
-        "recordings_heading": "Favorite Recordings",
+        "music_desc": "What I'm currently listening to, and a running list of concerts I've been to. Compositions and recordings of my own playing are coming eventually.",
+        "recordings_heading": "Currently Listening",
         "concerts_heading": "Concerts Attended",
         "no_recordings": "No recordings added yet — edit content/music/recordings.yaml and rebuild.",
         "no_concerts": "No concerts added yet — edit content/music/concerts.csv and rebuild.",
@@ -116,15 +116,41 @@ STRINGS = {
         "cv_open": "Télécharger en PDF",
         "no_notes": "Aucune note pour l'instant — ajoutez un PDF dans content/notes/{slug}/ et relancez la génération.",
         "no_projects": "Aucun projet pour l'instant — ajoutez un PDF dans content/projects/{slug}/ et relancez la génération.",
-        "music_eyebrow": "§5 — Musique",
+        "music_eyebrow": "Musique",
         "music_title": "Musique",
-        "music_desc": "Quelques enregistrements favoris, et une liste des concerts auxquels j'ai assisté. Mes propres compositions et enregistrements arriveront plus tard.",
-        "recordings_heading": "Enregistrements favoris",
+        "music_desc": "Ce que j'écoute en ce moment, et une liste des concerts auxquels j'ai assisté. Mes propres compositions et enregistrements arriveront plus tard.",
+        "recordings_heading": "Écoute actuelle",
         "concerts_heading": "Concerts",
         "no_recordings": "Aucun enregistrement pour l'instant — modifiez content/music/recordings.yaml et relancez la génération.",
         "no_concerts": "Aucun concert pour l'instant — modifiez content/music/concerts.csv et relancez la génération.",
         "footer_built": "généré avec un petit générateur de site",
         "footer_school": "Université de Boston",
+    },
+    "de": {
+        "lang_label": "DE",
+        "site_tagline": "Boston University",
+        "home": "Startseite", "cv": "CV", "math_tab": "Mathematik", "physics_tab": "Physik", "music_tab": "Musik",
+        "subject_label": {"math": "Mathematik", "physics": "Physik"},
+        "subject_desc": {
+            "math": "Vorlesungsnotizen und Projekte aus meinem Mathematikstudium und eigenständigen Studien.",
+            "physics": "Vorlesungsnotizen und Projekte aus meinem Physikstudium und eigenständigen Studien.",
+        },
+        "notes_heading": "Notizen",
+        "projects_heading": "Projekte",
+        "cv_eyebrow": "Lebenslauf",
+        "cv_title": "CV",
+        "cv_open": "Als PDF herunterladen",
+        "no_notes": "Noch keine Notizen vorhanden — legen Sie ein PDF in content/notes/{slug}/ ab und erstellen Sie die Seite neu.",
+        "no_projects": "Noch keine Projekte vorhanden — legen Sie ein PDF in content/projects/{slug}/ ab und erstellen Sie die Seite neu.",
+        "music_eyebrow": "Musik",
+        "music_title": "Musik",
+        "music_desc": "Was ich gerade höre, und eine laufende Liste der Konzerte, die ich besucht habe. Eigene Kompositionen und Aufnahmen meines Spiels folgen irgendwann.",
+        "recordings_heading": "Aktuell gehört",
+        "concerts_heading": "Besuchte Konzerte",
+        "no_recordings": "Noch keine Aufnahmen hinzugefügt — bearbeiten Sie content/music/recordings.yaml und erstellen Sie die Seite neu.",
+        "no_concerts": "Noch keine Konzerte hinzugefügt — bearbeiten Sie content/music/concerts.csv und erstellen Sie die Seite neu.",
+        "footer_built": "erstellt mit einem selbstgeschriebenen Site-Generator",
+        "footer_school": "Boston University",
     },
 }
 
@@ -173,14 +199,26 @@ def read_pdfs(folder):
 
 
 def read_recordings(yaml_path, out_covers_dir, content_music_dir):
-    """Load favorite recordings from YAML, copy cover images to output."""
+    """Load favorite recordings from YAML. If a recording's link points to a
+    Spotify album, expose a Spotify embed URL (official iframe widget --
+    loads cover art and a preview player live from Spotify's own servers,
+    nothing downloaded or copied). Otherwise fall back to a local cover
+    image if one is given."""
+    import re as re_module
     import yaml
     if not os.path.exists(yaml_path):
         return []
     with open(yaml_path, encoding="utf-8") as f:
         data = yaml.safe_load(f) or []
     items = []
+    spotify_re = re_module.compile(r"open\.spotify\.com/album/([A-Za-z0-9]+)")
     for entry in data:
+        link = entry.get("link", "")
+        spotify_embed_url = None
+        m = spotify_re.search(link)
+        if m:
+            spotify_embed_url = f"https://open.spotify.com/embed/album/{m.group(1)}?utm_source=generator"
+
         cover_rel = entry.get("cover", "")
         cover_abs = None
         if cover_rel:
@@ -190,11 +228,13 @@ def read_recordings(yaml_path, out_covers_dir, content_music_dir):
                 os.makedirs(os.path.dirname(dst), exist_ok=True)
                 shutil.copy2(src, dst)
                 cover_abs = dst
+
         items.append({
             "title": entry.get("title", ""),
             "performer": entry.get("performer", ""),
-            "link": entry.get("link", ""),
+            "link": link,
             "cover_abs": cover_abs,
+            "spotify_embed_url": spotify_embed_url,
         })
     return items
 
@@ -219,6 +259,7 @@ def read_concerts(csv_path):
                 "year": date_obj.strftime("%Y") if date_obj else "",
                 "program": (row.get("program") or "").strip(),
                 "venue": (row.get("venue") or "").strip(),
+                "link": (row.get("link") or "").strip(),
             })
     rows.sort(key=lambda r: (r["date_obj"] is None, r["date_obj"] or datetime.min), reverse=True)
     return rows
@@ -240,11 +281,14 @@ def build():
     os.makedirs(OUT)
     shutil.copytree(STATIC, os.path.join(OUT, "static"))
     if os.path.isdir(os.path.join(CONTENT, "images")):
-        # Copied into both language roots so a plain "images/x.jpg" path
-        # in about.en.md / about.fr.md resolves correctly from either.
+        # Copied into every language root so a plain "images/x.jpg" path
+        # in about.<lang>.md resolves correctly from any of them.
         shutil.copytree(os.path.join(CONTENT, "images"), os.path.join(OUT, "images"))
-        os.makedirs(OUT_ROOT["fr"], exist_ok=True)
-        shutil.copytree(os.path.join(CONTENT, "images"), os.path.join(OUT_ROOT["fr"], "images"))
+        for lang_code in LANGS:
+            if lang_code == "en":
+                continue
+            os.makedirs(OUT_ROOT[lang_code], exist_ok=True)
+            shutil.copytree(os.path.join(CONTENT, "images"), os.path.join(OUT_ROOT[lang_code], "images"))
 
     year = datetime.now().year
 
@@ -298,7 +342,12 @@ def build():
     def base_ctx(out_path, lang, active, rel_page, page_title="", page_description=""):
         S = STRINGS[lang]
         out_root = OUT_ROOT[lang]
-        other_root = OUT_ROOT["fr" if lang == "en" else "en"]
+        lang_links = [{
+            "code": code,
+            "label": STRINGS[code]["lang_label"],
+            "href": href(out_path, os.path.join(OUT_ROOT[code], rel_page)),
+            "active": code == lang,
+        } for code in LANGS]
         return {
             "site": SITE, "year": year, "S": S, "lang": lang, "active": active,
             "page_title": page_title, "page_description": page_description or SITE["description"],
@@ -308,7 +357,7 @@ def build():
             "math_href": href(out_path, os.path.join(out_root, "math.html")),
             "physics_href": href(out_path, os.path.join(out_root, "physics.html")),
             "music_href": href(out_path, os.path.join(out_root, "music.html")),
-            "toggle_href": href(out_path, os.path.join(other_root, rel_page)),
+            "lang_links": lang_links,
         }
 
     for lang in LANGS:
@@ -334,7 +383,7 @@ def build():
 
             ctx = base_ctx(out_path, lang, slug, rel_page, page_title=label, page_description=S["subject_desc"][slug])
             ctx.update({
-                "eyebrow": f"§{'3' if slug == 'math' else '4'} — {label}",
+                "eyebrow": label,
                 "subject_name": label,
                 "subject_description": S["subject_desc"][slug],
                 "notes": notes,
@@ -353,7 +402,7 @@ def build():
                 cv_body_html = render_md(f.read())
         ctx = base_ctx(cv_out, lang, "cv", "cv.html", page_title=S["cv_title"])
         ctx.update({
-            "eyebrow": f"§2 — {S['cv_eyebrow']}",
+            "eyebrow": S['cv_eyebrow'],
             "cv_body_html": cv_body_html,
             "cv_pdf_href": href(cv_out, cv_pdf_abs_path) if os.path.exists(cv_pdf_abs_path) else None,
         })
@@ -364,10 +413,11 @@ def build():
         recordings_ctx = [{
             "title": r["title"], "performer": r["performer"], "link": r["link"],
             "cover_href": href(music_out, r["cover_abs"]) if r["cover_abs"] else None,
+            "spotify_embed_url": r["spotify_embed_url"],
         } for r in recordings]
         concert_groups = [{
             "year": y,
-            "rows": [{"date": c["date"], "program": c["program"], "venue": c["venue"]} for c in concerts_by_year[y]],
+            "rows": [{"date": c["date"], "program": c["program"], "venue": c["venue"], "link": c["link"]} for c in concerts_by_year[y]],
         } for y in concert_years]
         ctx = base_ctx(music_out, lang, "music", "music.html", page_title=S["music_title"], page_description=S["music_desc"])
         ctx.update({
@@ -393,7 +443,7 @@ def build():
 
     total_notes = sum(len(v) for v in notes_by_subject.values())
     total_projects = sum(len(v) for v in projects_by_subject.values())
-    print(f"Built site (EN + FR): {total_notes} notes, {total_projects} projects, CV → {OUT}/")
+    print(f"Built site (EN + FR + DE): {total_notes} notes, {total_projects} projects, CV → {OUT}/")
 
 
 if __name__ == "__main__":

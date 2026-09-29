@@ -37,6 +37,12 @@
     <span class="cv-org">Organisation Européenne pour la Recherche Nucléaire (CERN), Genève, Suisse</span>
     <span class="cv-date">Janvier 2026 – Présent</span>
   </div>
+  <div class="cv-role">Chercheur, superviseure : Prof. Alba Grassi</div>
+  <ul>
+    <li>Projet de recherche en physique mathématique et théorie de jauge.</li>
+    <li>Démonstration d'identités théoriques des groupes reliant des solutions analytiques de carré intégrable d'une déformation de l'oscillateur harmonique quantique au réseau de Toda quantique, un système intégrable.</li>
+    <li>Étude de la convergence de fonctions en théorie de jauge supersymétrique, et de leurs propriétés combinatoires dans certaines limites (énergie libre de Nekrasov&ndash;Shatashvili).</li>
+  </ul>
 </div>
 
 <div class="cv-entry">

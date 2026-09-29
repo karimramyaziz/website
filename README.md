@@ -35,24 +35,30 @@ The site has five tabs: **Home** (about), **CV**, **Mathematics**,
 Notes and Projects together, in that order — everything opens as a
 PDF in a new tab.
 
-## Language toggle (English / French)
+## Language toggle (English / French / German)
 
-The whole site builds twice — English at the root, French under `/fr/`
-— with an EN/FR switcher in the top-right of the header that links
-each page to its counterpart in the other language.
+The whole site builds three times — English at the root, French under
+`/fr/`, German under `/de/` — with an EN / FR / DE switcher in the
+top-right of the header that links each page to its counterpart in
+every other language.
 
-What's bilingual vs. not:
+What's translated vs. not:
 - **Site chrome** (tab names, section headings, buttons, empty-state
   messages): fully translated. Edit the `STRINGS` dict near the top of
-  `build.py` to change wording in either language.
+  `build.py` to change wording in any language.
 - **About**: real separate content per language —
-  `content/about.en.md` / `content/about.fr.md`. Edit each
-  independently.
-- **Notes, Projects, and the CV**: all PDFs, and *not*
-  auto-translated — they show up identically in both languages. Only
-  the page chrome around them (header, tabs, footer) switches.
+  `content/about.en.md` / `content/about.fr.md` / `content/about.de.md`.
+  Edit each independently.
+- **CV**: separate content per language too —
+  `content/cv.en.md` / `content/cv.fr.md` / `content/cv.de.md`. The
+  downloadable PDF (`content/cv.pdf`) is shared across all three,
+  since you likely only have one PDF version.
+- **Notes, Projects, and the recordings/concerts on the Music tab**:
+  all PDFs (or YAML/CSV data), and *not* auto-translated — they show
+  up identically in every language. Only the page chrome around them
+  (header, tabs, footer) switches.
 
-To add a third language later, duplicate a language block in
+To add a fourth language later, duplicate a language block in
 `STRINGS`, add `about.<code>.md`, and add `"<code>"` to the `LANGS`
 list — the rest of the build handles it automatically.
 

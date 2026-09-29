@@ -2,7 +2,6 @@
 {% block content %}
 
 <div class="intro-block">
-  <div class="eyebrow">{{ eyebrow }}</div>
   <h1>{{ S.music_title }}</h1>
   <p>{{ music_description }}</p>
 </div>
@@ -11,13 +10,23 @@
 {% if recordings %}
 <div class="recording-grid">
   {% for r in recordings %}
-  <a class="recording-card" href="{{ r.link }}" target="_blank" rel="noopener">
-    {% if r.cover_href %}
-    <img class="recording-cover" src="{{ r.cover_href }}" alt="{{ r.title }}">
+  <div class="recording-card">
+    {% if r.spotify_embed_url %}
+    <iframe class="recording-embed" src="{{ r.spotify_embed_url }}" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="{{ r.title }}"></iframe>
+    <a class="recording-meta-link" href="{{ r.link }}" target="_blank" rel="noopener">
+      <div class="recording-title">{{ r.title }}</div>
+      <div class="recording-performer">{{ r.performer }}</div>
+    </a>
+    {% else %}
+    <a class="recording-plain-link" href="{{ r.link }}" target="_blank" rel="noopener">
+      {% if r.cover_href %}
+      <img class="recording-cover" src="{{ r.cover_href }}" alt="{{ r.title }}">
+      {% endif %}
+      <div class="recording-title">{{ r.title }}</div>
+      <div class="recording-performer">{{ r.performer }}</div>
+    </a>
     {% endif %}
-    <div class="recording-title">{{ r.title }}</div>
-    <div class="recording-performer">{{ r.performer }}</div>
-  </a>
+  </div>
   {% endfor %}
 </div>
 {% else %}
@@ -32,7 +41,11 @@
   {% for row in group.rows %}
   <li class="concert-row">
     <span class="concert-date">{{ row.date }}</span>
+    {% if row.link %}
+    <a class="concert-program" href="{{ row.link }}" target="_blank" rel="noopener">{{ row.program }}</a>
+    {% else %}
     <span class="concert-program">{{ row.program }}</span>
+    {% endif %}
     <span class="concert-venue">{{ row.venue }}</span>
   </li>
   {% endfor %}
