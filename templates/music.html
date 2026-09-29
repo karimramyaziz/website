@@ -12,7 +12,7 @@
   {% for r in recordings %}
   <div class="recording-card">
     {% if r.spotify_embed_url %}
-    <iframe class="recording-embed" src="{{ r.spotify_embed_url }}" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="{{ r.title }}"></iframe>
+    <iframe class="recording-embed" src="{{ r.spotify_embed_url }}" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="{{ r.title }}"></iframe>
     <a class="recording-meta-link" href="{{ r.link }}" target="_blank" rel="noopener">
       <div class="recording-title">{{ r.title }}</div>
       <div class="recording-performer">{{ r.performer }}</div>
@@ -49,7 +49,11 @@
       {% endif %}
       <span class="concert-venue">{{ row.venue }}</span>
     </div>
-    <div class="concert-program">{{ row.program }}</div>
+    <div class="concert-program">
+      {% for piece in row.program_lines %}
+      <div class="concert-piece">{{ piece }}</div>
+      {% endfor %}
+    </div>
   </li>
   {% endfor %}
 </ul>

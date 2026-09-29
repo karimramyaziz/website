@@ -44,13 +44,11 @@ body {
   to { opacity: 1; }
 }
 
-/* Cross-document View Transitions: smooth cross-fade between page
-   navigations in browsers that support it (Chrome/Edge). Browsers
-   without support simply ignore this — no fallback needed, the
-   plain fade-in above still applies everywhere. */
-@view-transition {
-  navigation: auto;
-}
+/* Cross-document View Transitions were removed here: with Arabic (RTL)
+   now in the mix alongside LTR languages, the automatic Chrome/Edge
+   crossfade could look jarring on navigations where text direction
+   flips. The plain fade-in above already smooths every navigation,
+   in every browser, without that risk. */
 
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--accent-hover); }
@@ -531,6 +529,8 @@ a.concert-conductor:hover { color: var(--accent); text-decoration: underline; }
   font-size: 13.5px;
   line-height: 1.5;
 }
+.concert-piece { margin-bottom: 1px; }
+.concert-piece:last-child { margin-bottom: 0; }
 
 @media (max-width: 620px) {
   .concert-row-top { flex-wrap: wrap; }
@@ -610,6 +610,36 @@ html[dir="rtl"] .concert-year {
   font-family: "Noto Sans Arabic", sans-serif;
   letter-spacing: normal;
   text-transform: none;
+}
+
+/* Arabic reads as cramped at the very small sizes tuned for Latin
+   mono/uppercase labels (10-13px). Bump these specific spots up a
+   notch and give a touch more line-height/padding so letterforms
+   have room to sit properly. */
+html[dir="rtl"] .eyebrow { font-size: 13px; }
+html[dir="rtl"] .tabbar a { font-size: 14px; }
+html[dir="rtl"] .group-heading { font-size: 13px; }
+html[dir="rtl"] .site-tag { font-size: 13.5px; }
+html[dir="rtl"] .lang-toggle { font-size: 13px; }
+html[dir="rtl"] .concert-year { font-size: 14px; }
+html[dir="rtl"] .pdf-badge {
+  font-size: 12px;
+  padding: 2px 7px;
+  line-height: 1.6;
+}
+html[dir="rtl"] .cv-skill-label {
+  font-size: 12.5px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+html[dir="rtl"] .concert-date,
+html[dir="rtl"] footer {
+  font-size: 13px;
+}
+html[dir="rtl"] .toc-item .sub,
+html[dir="rtl"] .toc-item .date,
+html[dir="rtl"] .recording-performer {
+  font-size: 12.5px;
 }
 
 /* Photo: floats to the opposite side so the whole layout mirrors,

@@ -13,8 +13,9 @@
   </div>
   <div class="cv-role">Licence de mathématiques (parcours pur), Licence de physique (option recherche)</div>
   <ul>
-    <li>Moyenne générale : 3.93/4.00</li>
-    <li>Cours pertinents : Calcul vectoriel (honors), Équations différentielles (honors), Algèbre linéaire (honors), Mathématiques discrètes, Algèbre abstraite I &amp; II, Analyse réelle I &amp; II, Topologie, Géométrie algébrique, Géométrie différentielle, Théorie algébrique des nombres, Mécanique classique, Physique moderne, Électrodynamique I &amp; II, Physique quantique I &amp; II, Introduction à l'informatique, Rédaction scientifique</li>
+    <li>Moyenne générale : 3.89/4.00</li>
+    <li>Cours pertinents : Calcul vectoriel (honors), Équations différentielles (honors), Algèbre linéaire (honors), Mathématiques discrètes, Algèbre abstraite I &amp; II, Analyse réelle I &amp; II, Topologie, Géométrie algébrique, Géométrie différentielle, Théorie algébrique des nombres, Théorie de la mesure, Théorie des représentations, Mécanique classique, Physique moderne, Électrodynamique I &amp; II, Physique quantique I &amp; II, Introduction à l'informatique, Rédaction scientifique</li>
+    <li>Semestre d'échange à l'Université de Genève, Suisse (janvier – juin 2026)</li>
   </ul>
 </div>
 
@@ -117,10 +118,21 @@
   </ul>
 </div>
 
+<div class="cv-entry">
+  <div class="cv-entry-head">
+    <span class="cv-org">Organisation Européenne pour la Recherche Nucléaire (CERN), Genève, Suisse</span>
+    <span class="cv-date">Été 2026</span>
+  </div>
+  <div class="cv-role">Bourse « CERN Summer Student »</div>
+  <ul>
+    <li>Financement reçu pour soutenir la recherche estivale décrite ci-dessus dans la section Expérience.</li>
+  </ul>
+</div>
+
 ## Compétences
 
 <div class="cv-skills">
   <div><span class="cv-skill-label">Informatique</span>Python · Unix · LaTeX · Wolfram Mathematica</div>
-  <div><span class="cv-skill-label">Langues</span>Anglais (<em>natif</em>) · Français (<em>natif</em>) · Arabe (<em>natif</em>) · Espagnol (<em>courant</em>)</div>
+  <div><span class="cv-skill-label">Langues</span>Anglais (<em>natif</em>) · Français (<em>natif</em>) · Arabe (<em>natif</em>) · Espagnol (<em>courant</em>) · Allemand (<em>élémentaire</em>)</div>
   <div><span class="cv-skill-label">Activités extrascolaires</span>Musique classique (<em>pianiste, compositeur</em>) · Échecs (<a href="https://ratings.fide.com/profile/54203961" target="_blank" rel="noopener">profil FIDE</a>) · Football (<em>attaquant droit</em>)</div>
 </div>

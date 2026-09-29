@@ -13,8 +13,9 @@
   </div>
   <div class="cv-role">Bachelor of Arts in Mathematics (Pure Track), Bachelor of Arts in Physics (Graduate Option)</div>
   <ul>
-    <li>Grade Point Average: 3.93/4.00</li>
-    <li>Relevant Coursework: Honors Vector Calculus, Honors Differential Equations, Honors Linear Algebra, Discrete Mathematics, Abstract Algebra I &amp; II, Real Analysis I &amp; II, Topology, Algebraic Geometry, Differential Geometry, Algebraic Number Theory, Classical Mechanics, Modern Physics, Electrodynamics I &amp; II, Quantum Physics I &amp; II, Introduction to Computer Science, Research Writing</li>
+    <li>Grade Point Average: 3.89/4.00</li>
+    <li>Relevant Coursework: Honors Vector Calculus, Honors Differential Equations, Honors Linear Algebra, Discrete Mathematics, Abstract Algebra I &amp; II, Real Analysis I &amp; II, Topology, Algebraic Geometry, Differential Geometry, Algebraic Number Theory, Measure Theory, Representation Theory, Classical Mechanics, Modern Physics, Electrodynamics I &amp; II, Quantum Physics I &amp; II, Introduction to Computer Science, Research Writing</li>
+    <li>Exchange semester at the University of Geneva, Switzerland (January – June 2026)</li>
   </ul>
 </div>
 
@@ -117,10 +118,21 @@
   </ul>
 </div>
 
+<div class="cv-entry">
+  <div class="cv-entry-head">
+    <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, Switzerland</span>
+    <span class="cv-date">Summer 2026</span>
+  </div>
+  <div class="cv-role">CERN Summer Student Grant</div>
+  <ul>
+    <li>Received funding to support the summer research described above under Experience.</li>
+  </ul>
+</div>
+
 ## Skills
 
 <div class="cv-skills">
   <div><span class="cv-skill-label">Computational</span>Python · Unix · LaTeX · Wolfram Mathematica</div>
-  <div><span class="cv-skill-label">Linguistic</span>English (<em>Native</em>) · French (<em>Native</em>) · Arabic (<em>Native</em>) · Spanish (<em>Fluent</em>)</div>
+  <div><span class="cv-skill-label">Linguistic</span>English (<em>Native</em>) · French (<em>Native</em>) · Arabic (<em>Native</em>) · Spanish (<em>Fluent</em>) · German (<em>Elementary</em>)</div>
   <div><span class="cv-skill-label">Extracurricular</span>Classical Music (<em>Pianist, Composer</em>) · Chess (<a href="https://ratings.fide.com/profile/54203961" target="_blank" rel="noopener">FIDE Profile</a>) · Soccer Player (<em>Right Forward</em>)</div>
 </div>

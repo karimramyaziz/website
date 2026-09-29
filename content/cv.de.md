@@ -13,8 +13,9 @@
   </div>
   <div class="cv-role">Bachelor of Arts in Mathematik (reiner Zweig), Bachelor of Arts in Physik (Forschungsoption)</div>
   <ul>
-    <li>Notendurchschnitt: 3.93/4.00</li>
-    <li>Relevante Kurse: Honors Vektoranalysis, Honors Differentialgleichungen, Honors Lineare Algebra, Diskrete Mathematik, Abstrakte Algebra I &amp; II, Reelle Analysis I &amp; II, Topologie, Algebraische Geometrie, Differentialgeometrie, Algebraische Zahlentheorie, Klassische Mechanik, Moderne Physik, Elektrodynamik I &amp; II, Quantenphysik I &amp; II, Einführung in die Informatik, Wissenschaftliches Schreiben</li>
+    <li>Notendurchschnitt: 3.89/4.00</li>
+    <li>Relevante Kurse: Honors Vektoranalysis, Honors Differentialgleichungen, Honors Lineare Algebra, Diskrete Mathematik, Abstrakte Algebra I &amp; II, Reelle Analysis I &amp; II, Topologie, Algebraische Geometrie, Differentialgeometrie, Algebraische Zahlentheorie, Maßtheorie, Darstellungstheorie, Klassische Mechanik, Moderne Physik, Elektrodynamik I &amp; II, Quantenphysik I &amp; II, Einführung in die Informatik, Wissenschaftliches Schreiben</li>
+    <li>Austauschsemester an der Universität Genf, Schweiz (Januar – Juni 2026)</li>
   </ul>
 </div>
 
@@ -117,10 +118,21 @@
   </ul>
 </div>
 
+<div class="cv-entry">
+  <div class="cv-entry-head">
+    <span class="cv-org">Europäische Organisation für Kernforschung (CERN), Genf, Schweiz</span>
+    <span class="cv-date">Sommer 2026</span>
+  </div>
+  <div class="cv-role">CERN Summer Student Grant</div>
+  <ul>
+    <li>Finanzierung der oben unter Erfahrung beschriebenen Sommerforschung erhalten.</li>
+  </ul>
+</div>
+
 ## Fähigkeiten
 
 <div class="cv-skills">
   <div><span class="cv-skill-label">EDV</span>Python · Unix · LaTeX · Wolfram Mathematica</div>
-  <div><span class="cv-skill-label">Sprachen</span>Englisch (<em>Muttersprache</em>) · Französisch (<em>Muttersprache</em>) · Arabisch (<em>Muttersprache</em>) · Spanisch (<em>fließend</em>)</div>
+  <div><span class="cv-skill-label">Sprachen</span>Englisch (<em>Muttersprache</em>) · Französisch (<em>Muttersprache</em>) · Arabisch (<em>Muttersprache</em>) · Spanisch (<em>fließend</em>) · Deutsch (<em>Elementarkenntnisse</em>)</div>
   <div><span class="cv-skill-label">Außerschulisches Engagement</span>Klassische Musik (<em>Pianist, Komponist</em>) · Schach (<a href="https://ratings.fide.com/profile/54203961" target="_blank" rel="noopener">FIDE-Profil</a>) · Fußball (<em>Rechtsaußen</em>)</div>
 </div>

@@ -450,7 +450,8 @@ def build():
             "year": y,
             "rows": [{
                 "date": c["date"], "conductor": c["conductor"], "orchestra": c["orchestra"],
-                "program": c["program"], "venue": c["venue"], "link": c["link"],
+                "program_lines": re.split(r"\s*[;؛]\s*", c["program"]) if c["program"] else [],
+                "venue": c["venue"], "link": c["link"],
             } for c in concerts_by_year[y]],
         } for y in concert_years]
 
