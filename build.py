@@ -60,7 +60,7 @@ TEMPLATES = os.path.join(ROOT, "templates")
 STATIC = os.path.join(ROOT, "static")
 OUT = os.path.join(ROOT, "docs")
 
-LANGS = ["en", "fr", "de", "ar"]
+LANGS = ["en", "fr", "de"]  # "ar" temporarily disabled — content/about.ar.md, cv.ar.md, etc. still on disk, add "ar" back here to re-enable
 OUT_ROOT = {"en": OUT, "fr": os.path.join(OUT, "fr"), "de": os.path.join(OUT, "de"), "ar": os.path.join(OUT, "ar")}
 TEXT_DIR = {"en": "ltr", "fr": "ltr", "de": "ltr", "ar": "rtl"}
 
@@ -479,7 +479,7 @@ def build():
 
     total_notes = sum(len(v) for v in notes_by_subject.values())
     total_projects = sum(len(v) for v in projects_by_subject.values())
-    print(f"Built site (EN + FR + DE + AR): {total_notes} notes, {total_projects} projects, CV → {OUT}/")
+    print(f"Built site (EN + FR + DE): {total_notes} notes, {total_projects} projects, CV → {OUT}/")
 
 
 if __name__ == "__main__":
