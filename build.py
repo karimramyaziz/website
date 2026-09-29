@@ -282,7 +282,7 @@ def read_concerts(csv_path):
                 date_obj = None
             rows.append({
                 "date_obj": date_obj,
-                "date": date_obj.strftime("%b %-d, %Y") if date_obj else date_raw,
+                "date": date_obj.strftime("%-d %b") if date_obj else date_raw,
                 "year": date_obj.strftime("%Y") if date_obj else "",
                 "conductor": (row.get("conductor") or "").strip(),
                 "orchestra": (row.get("orchestra") or "").strip(),
