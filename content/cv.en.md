@@ -14,8 +14,8 @@
   <div class="cv-role">Bachelor of Arts in Mathematics (Pure Track), Bachelor of Arts in Physics (Graduate Option)</div>
   <ul>
     <li>Grade Point Average: 3.89/4.00</li>
-    <li>Relevant Coursework: Honors Vector Calculus, Honors Differential Equations, Honors Linear Algebra, Discrete Mathematics, Abstract Algebra I &amp; II, Real Analysis I &amp; II, Topology, Algebraic Geometry, Differential Geometry, Algebraic Number Theory, Measure Theory, Representation Theory, Classical Mechanics, Modern Physics, Electrodynamics I &amp; II, Quantum Physics I &amp; II, Introduction to Computer Science, Research Writing</li>
-    <li>Exchange semester at the University of Geneva, Switzerland (January – June 2026)</li>
+    <li>Relevant Coursework: Honors Vector Calculus, Honors Differential Equations, Honors Linear Algebra, Discrete Mathematics, Abstract Algebra I &amp; II, Real Analysis I &amp; II, Measure Theory, Topology, Algebraic Geometry, Differential Geometry, Algebraic Number Theory, Representation Theory, Classical Mechanics, Modern Physics, Electrodynamics I &amp; II, Quantum Physics I &amp; II, Introduction to Computer Science, Research Writing</li>
+    <li>Did an exchange with the University of Geneva in the spring semester of 2026</li>
   </ul>
 </div>
 
@@ -35,10 +35,10 @@
 
 <div class="cv-entry">
   <div class="cv-entry-head">
-    <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, Switzerland</span>
+    <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, CH</span>
     <span class="cv-date">January 2026 – Present</span>
   </div>
-  <div class="cv-role">Researcher, Supervisor: Prof. Alba Grassi</div>
+  <div class="cv-role">Visiting Researcher, Supervisor: Prof. Alba Grassi</div>
   <ul>
     <li>Research project in mathematical physics and gauge theory.</li>
     <li>Proved group-theoretic identities relating analytic square-integrable solutions of a deformation of the quantum harmonic oscillator to the Quantum Toda Lattice, an integrable system.</li>
@@ -90,7 +90,7 @@
   </div>
   <div class="cv-role">Poster Presentation</div>
   <ul>
-    <li>Presented a poster titled &ldquo;Corrections to the Born-Oppenheimer Approximation in Classical Systems&rdquo; on research conducted over the summer in theoretical condensed matter physics. This investigated how a result used in quantum mechanics could be translated to classical systems modeling phonon-electron interactions.</li>
+    <li>Presented a poster on research conducted over the summer under Prof. Polkovnikov.</li>
   </ul>
 </div>
 
@@ -109,23 +109,23 @@
 
 <div class="cv-entry">
   <div class="cv-entry-head">
+    <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, CH</span>
+    <span class="cv-date">July 2026 – August 2026</span>
+  </div>
+  <div class="cv-role">United States Department of Education Grant</div>
+  <ul>
+    <li>Received funding to conduct full-time research with Prof. Alba Grassi in Geneva.</li>
+  </ul>
+</div>
+
+<div class="cv-entry">
+  <div class="cv-entry-head">
     <span class="cv-org">Boston University, Boston, MA, U.S.A.</span>
     <span class="cv-date">June – August 2025</span>
   </div>
   <div class="cv-role">NSF Grant Number PHY-2244795</div>
   <ul>
     <li>Conducted research over the summer through Boston University's Research Experience for Undergraduates.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-head">
-    <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, Switzerland</span>
-    <span class="cv-date">Summer 2026</span>
-  </div>
-  <div class="cv-role">CERN Summer Student Grant</div>
-  <ul>
-    <li>Received funding to support the summer research described above under Experience.</li>
   </ul>
 </div>
 

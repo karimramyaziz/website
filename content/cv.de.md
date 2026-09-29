@@ -14,8 +14,8 @@
   <div class="cv-role">Bachelor of Arts in Mathematik (reiner Zweig), Bachelor of Arts in Physik (Forschungsoption)</div>
   <ul>
     <li>Notendurchschnitt: 3.89/4.00</li>
-    <li>Relevante Kurse: Honors Vektoranalysis, Honors Differentialgleichungen, Honors Lineare Algebra, Diskrete Mathematik, Abstrakte Algebra I &amp; II, Reelle Analysis I &amp; II, Topologie, Algebraische Geometrie, Differentialgeometrie, Algebraische Zahlentheorie, Maßtheorie, Darstellungstheorie, Klassische Mechanik, Moderne Physik, Elektrodynamik I &amp; II, Quantenphysik I &amp; II, Einführung in die Informatik, Wissenschaftliches Schreiben</li>
-    <li>Austauschsemester an der Universität Genf, Schweiz (Januar – Juni 2026)</li>
+    <li>Relevante Kurse: Honors Vektoranalysis, Honors Differentialgleichungen, Honors Lineare Algebra, Diskrete Mathematik, Abstrakte Algebra I &amp; II, Reelle Analysis I &amp; II, Maßtheorie, Topologie, Algebraische Geometrie, Differentialgeometrie, Algebraische Zahlentheorie, Darstellungstheorie, Klassische Mechanik, Moderne Physik, Elektrodynamik I &amp; II, Quantenphysik I &amp; II, Einführung in die Informatik, Wissenschaftliches Schreiben</li>
+    <li>Austauschsemester an der Universität Genf im Frühjahrssemester 2026</li>
   </ul>
 </div>
 
@@ -35,10 +35,10 @@
 
 <div class="cv-entry">
   <div class="cv-entry-head">
-    <span class="cv-org">Europäische Organisation für Kernforschung (CERN), Genf, Schweiz</span>
+    <span class="cv-org">Europäische Organisation für Kernforschung (CERN), Genf, CH</span>
     <span class="cv-date">Januar 2026 – Heute</span>
   </div>
-  <div class="cv-role">Forscher, Betreuerin: Prof. Alba Grassi</div>
+  <div class="cv-role">Gastforscher, Betreuerin: Prof. Alba Grassi</div>
   <ul>
     <li>Forschungsprojekt in mathematischer Physik und Eichtheorie.</li>
     <li>Beweis gruppentheoretischer Identitäten, die analytische quadratintegrierbare Lösungen einer Deformation des quantenharmonischen Oszillators mit dem Quanten-Toda-Gitter, einem integrablen System, in Verbindung bringen.</li>
@@ -90,7 +90,7 @@
   </div>
   <div class="cv-role">Posterpräsentation</div>
   <ul>
-    <li>Präsentation eines Posters mit dem Titel &bdquo;Corrections to the Born-Oppenheimer Approximation in Classical Systems&ldquo; über Forschung, die im Sommer im Bereich der theoretischen Physik der kondensierten Materie durchgeführt wurde. Untersucht wurde, wie ein aus der Quantenmechanik bekanntes Ergebnis auf klassische Systeme zur Modellierung von Phonon-Elektron-Wechselwirkungen übertragen werden kann.</li>
+    <li>Präsentation eines Posters über Forschung, die im Sommer unter der Betreuung von Prof. Polkovnikov durchgeführt wurde.</li>
   </ul>
 </div>
 
@@ -109,23 +109,25 @@
 
 <div class="cv-entry">
   <div class="cv-entry-head">
+<div class="cv-entry">
+  <div class="cv-entry-head">
+    <span class="cv-org">Europäische Organisation für Kernforschung (CERN), Genf, CH</span>
+    <span class="cv-date">Juli 2026 – August 2026</span>
+  </div>
+  <div class="cv-role">Stipendium des US-Bildungsministeriums (United States Department of Education)</div>
+  <ul>
+    <li>Finanzierung für Vollzeitforschung mit Prof. Alba Grassi in Genf erhalten.</li>
+  </ul>
+</div>
+
+<div class="cv-entry">
+  <div class="cv-entry-head">
     <span class="cv-org">Boston University, Boston, MA, USA</span>
     <span class="cv-date">Juni – August 2025</span>
   </div>
   <div class="cv-role">NSF-Förderung Nr. PHY-2244795</div>
   <ul>
     <li>Forschung im Sommer im Rahmen des Research Experience for Undergraduates-Programms der Boston University.</li>
-  </ul>
-</div>
-
-<div class="cv-entry">
-  <div class="cv-entry-head">
-    <span class="cv-org">Europäische Organisation für Kernforschung (CERN), Genf, Schweiz</span>
-    <span class="cv-date">Sommer 2026</span>
-  </div>
-  <div class="cv-role">CERN Summer Student Grant</div>
-  <ul>
-    <li>Finanzierung der oben unter Erfahrung beschriebenen Sommerforschung erhalten.</li>
   </ul>
 </div>
 
