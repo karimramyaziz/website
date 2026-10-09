@@ -109,10 +109,21 @@
 
 <div class="cv-entry">
   <div class="cv-entry-head">
+    <span class="cv-org">Boston University, Boston, MA, U.S.A.</span>
+    <span class="cv-date">October 2026 – Present</span>
+  </div>
+  <div class="cv-role">Undergraduate Research Opportunities Program (UROP) Grant</div>
+  <ul>
+    <li>Received funding to conduct research under Prof. Polkovnikov.</li>
+  </ul>
+</div>
+
+<div class="cv-entry">
+  <div class="cv-entry-head">
     <span class="cv-org">European Organization for Nuclear Research (CERN), Geneva, CH</span>
     <span class="cv-date">July 2026 – August 2026</span>
   </div>
-  <div class="cv-role">United States Department of Education Grant</div>
+  <div class="cv-role">United States Department of Energy Grant</div>
   <ul>
     <li>Received funding to conduct full-time research with Prof. Alba Grassi in Geneva.</li>
   </ul>
@@ -123,9 +134,9 @@
     <span class="cv-org">Boston University, Boston, MA, U.S.A.</span>
     <span class="cv-date">June – August 2025</span>
   </div>
-  <div class="cv-role">NSF Grant Number PHY-2244795</div>
+  <div class="cv-role">National Science Foundation (NSF) Grant Number PHY-2244795</div>
   <ul>
-    <li>Conducted research over the summer through Boston University's Research Experience for Undergraduates.</li>
+    <li>Conducted research under Prof. Polkovnikov through the Research Experience for Undergraduates.</li>
   </ul>
 </div>
 
